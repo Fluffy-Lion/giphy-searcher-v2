@@ -1,12 +1,20 @@
-const PopUp = ({ showPopUp, setShowPopUp }) => {
-    if(!showPopUp) {
+import styled from "styled-components"
+const PageWrap = styled.div `
+        background: black;
+        width: 50%;
+        width: ${props => props.gif ? "inherit" : null}
+    `
+const PopUp = (props) => {
+    if(!props.showPopUp) {
         return null
     }
     return (
-        <div>
-            <h1>pop up</h1>
-            <button onClick={() => setShowPopUp(false)}>close</button>
-        </div>
+        <PageWrap>
+            <div gif>
+                {props.children}
+            </div>
+            <button onClick={() => props.setShowPopUp(false)}>close</button>
+        </PageWrap>
     )
 }
 

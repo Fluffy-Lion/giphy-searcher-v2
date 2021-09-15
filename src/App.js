@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import PopUp from "./components/PopUp";
 
@@ -22,12 +22,23 @@ const App = () => {
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    getRandom()
+  }, []) 
+  
+  if(!loaded) {
+    return null
+  }
   return (
     <div>
       <h1>giphy searcher v2</h1>
       <button onClick={getRandom}>get</button>
+      {/* get random gif */}
       <button onClick={() => setShowPopUp(true)}>show pop</button>
-      <PopUp setShowPopUp={setShowPopUp} showPopUp={showPopUp} />
+      <PopUp setShowPopUp={setShowPopUp} showPopUp={showPopUp}>
+        <img src={random.data.images.fixed_height.url}/>
+      </PopUp>
     </div>
   );
 }
