@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import GifList from "./components/GifList";
 
 import PopUp from "./components/PopUp";
 
@@ -48,11 +49,17 @@ const App = () => {
       <h1>giphy searcher v2</h1>
       {/* get random gif */}
       <button onClick={() => setShowPopUp(true)}>random</button>
-      <PopUp setShowPopUp={setShowPopUp} showPopUp={showPopUp} 
-      src={random.data.images.fixed_height.url}
-      getRandom={getRandom}
+      <PopUp
+        setShowPopUp={setShowPopUp}
+        showPopUp={showPopUp}
+        src={random.data.images.fixed_height.url}
+        getRandom={getRandom}
       />
-
+      <GifList
+        favourites={favourites}
+        setFavourites={setFavourites}
+        data={data} 
+      />
     </div>
   );
 }
