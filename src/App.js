@@ -10,10 +10,24 @@ const App = () => {
   const [loaded, setLoaded] = useState(false)
   const [favourites, setFavourites] = useState([])
   const [showPopUp, setShowPopUp] = useState(false)
+  const [input, setInput] = useState("")
+
+  const key = process.env.REACT_APP_API_KEY
+
+  const searcher = async (e) => {
+    e.preventDefault()
+      try {
+        setData([])
+        let response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${input}`)
+        let newData = await response.json()
+        setData(newData.data)
+      } catch (error) {
+        console.log(error)
+      }
+  }
 
   const getTrending = async () => {
-    const key = process.env.REACT_APP_API_KEY
-
+    
     try {
       let response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${key}`)
       let newData = await response.json()
@@ -24,7 +38,6 @@ const App = () => {
   }
 
   const getRandom = async () => {
-    const key = process.env.REACT_APP_API_KEY
 
     try {
       let response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${key}`)
@@ -49,6 +62,12 @@ const App = () => {
       <h1>giphy searcher v2</h1>
       {/* get random gif */}
       <button onClick={() => setShowPopUp(true)}>random</button>
+      <div>
+        <form onSubmit={(e) => searcher(e)}>
+          <input type="text" onChange={(e) => setInput(e.target.value)} />
+          <button type="submit">search</button>
+        </form>
+      </div>
       <PopUp
         setShowPopUp={setShowPopUp}
         showPopUp={showPopUp}
