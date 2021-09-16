@@ -1,18 +1,18 @@
 import styled from "styled-components"
+import GifItem from "./GifItem"
 const PageWrap = styled.div `
-        background: black;
+        background: yellow;
         width: 50%;
-        width: ${props => props.gif ? "inherit" : null}
+        border: solid green 5px;
     `
+
 const PopUp = (props) => {
     if(!props.showPopUp) {
         return null
     }
     return (
         <PageWrap>
-            <div gif>
-                {props.children}
-            </div>
+           <GifItem src={props.src} />
             <button onClick={() => props.setShowPopUp(false)}>close</button>
         </PageWrap>
     )

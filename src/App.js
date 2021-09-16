@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import PopUp from "./components/PopUp";
-
+import GifItem from './components/GifItem'
 const App = () => {
 
   const [data, setData] = useState([])
@@ -26,7 +26,7 @@ const App = () => {
   useEffect(() => {
     getRandom()
   }, []) 
-  
+
   if(!loaded) {
     return null
   }
@@ -36,9 +36,10 @@ const App = () => {
       <button onClick={getRandom}>get</button>
       {/* get random gif */}
       <button onClick={() => setShowPopUp(true)}>show pop</button>
-      <PopUp setShowPopUp={setShowPopUp} showPopUp={showPopUp}>
-        <img src={random.data.images.fixed_height.url}/>
-      </PopUp>
+      <PopUp setShowPopUp={setShowPopUp} showPopUp={showPopUp} 
+      src={random.data.images.fixed_height.url}
+      />
+
     </div>
   );
 }
