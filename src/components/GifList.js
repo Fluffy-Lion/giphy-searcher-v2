@@ -10,6 +10,13 @@ const GifWrap = styled.div `
     padding: 5px;
     
 `
+const GifCont = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    padding: 5px;
+`
 
 const GifList = ({ data, favourites, setFavourites }) => {
     if(!data) {
@@ -19,10 +26,10 @@ const GifList = ({ data, favourites, setFavourites }) => {
         <GifWrap>
             {data.map((gif, index) => {
                 return (
-                <>
+                <GifCont>
                     <GifItem src={gif.images.fixed_height.url} />
                     <AddToFav favourites={favourites} setFavourites={setFavourites} data={data} index={index} />
-                </>
+                </GifCont>
                 )
             })}
         </GifWrap>
