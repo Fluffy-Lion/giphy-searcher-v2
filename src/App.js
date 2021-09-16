@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import GifList from "./components/GifList";
 
 import PopUp from "./components/PopUp";
 
@@ -9,6 +10,18 @@ const App = () => {
   const [loaded, setLoaded] = useState(false)
   const [favourites, setFavourites] = useState([])
   const [showPopUp, setShowPopUp] = useState(false)
+
+  const getTrending = async () => {
+    const key = process.env.REACT_APP_API_KEY
+
+    try {
+      let response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${key}`)
+      let newData = await response.json()
+      setData(newData.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const getRandom = async () => {
     const key = process.env.REACT_APP_API_KEY
@@ -25,6 +38,7 @@ const App = () => {
 
   useEffect(() => {
     getRandom()
+    getTrending()
   }, []) 
 
   if(!loaded) {
@@ -35,11 +49,17 @@ const App = () => {
       <h1>giphy searcher v2</h1>
       {/* get random gif */}
       <button onClick={() => setShowPopUp(true)}>random</button>
-      <PopUp setShowPopUp={setShowPopUp} showPopUp={showPopUp} 
-      src={random.data.images.fixed_height.url}
-      getRandom={getRandom}
+      <PopUp
+        setShowPopUp={setShowPopUp}
+        showPopUp={showPopUp}
+        src={random.data.images.fixed_height.url}
+        getRandom={getRandom}
       />
-
+      <GifList
+        favourites={favourites}
+        setFavourites={setFavourites}
+        data={data} 
+      />
     </div>
   );
 }
