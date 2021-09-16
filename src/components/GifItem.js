@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const GifImg = styled.img `
-    border: solid blue 3px;
+    width: 100%;
 `
 
 const GifItem = ({ src }) => {
