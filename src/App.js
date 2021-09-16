@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import PopUp from "./components/PopUp";
-import GifItem from './components/GifItem'
+
 const App = () => {
 
   const [data, setData] = useState([])
