@@ -32,7 +32,7 @@ const Modal = styled.div `
         padding: 10px;
         width: 90%;
         height: auto;
-        border: yellow solid 3px;
+        border: black solid 2px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 `
 
@@ -41,12 +41,16 @@ const PopUp = (props) => {
     if(!props.showPopUp) {
         return null
     } 
-    console.log(props.showPopUp)
+    
+    const closeHandler = () => {
+        props.setShowPopUp(false)
+        props.getRandom()
+    }
     return (
         <PageWrap>
             <Modal>
                 <GifItem src={props.src} setShowPopUp={props.setShowPopUp} />
-                <StyledButton onClick={() => props.setShowPopUp(false)}>close</StyledButton>
+                <StyledButton onClick={closeHandler}>close</StyledButton>
             </Modal>
         </PageWrap>
     )
