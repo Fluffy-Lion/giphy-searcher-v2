@@ -10,6 +10,18 @@ const App = () => {
   const [favourites, setFavourites] = useState([])
   const [showPopUp, setShowPopUp] = useState(false)
 
+  const getTrending = async () => {
+    const key = process.env.REACT_APP_API_KEY
+
+    try {
+      let response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${key}`)
+      let newData = await response.json()
+      setData(newData.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const getRandom = async () => {
     const key = process.env.REACT_APP_API_KEY
 
@@ -25,6 +37,7 @@ const App = () => {
 
   useEffect(() => {
     getRandom()
+    getTrending()
   }, []) 
 
   if(!loaded) {
