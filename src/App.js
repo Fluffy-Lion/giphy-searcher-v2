@@ -33,11 +33,11 @@ const App = () => {
   return (
     <div>
       <h1>giphy searcher v2</h1>
-      <button onClick={getRandom}>get</button>
       {/* get random gif */}
-      <button onClick={() => setShowPopUp(true)}>show pop</button>
+      <button onClick={() => setShowPopUp(true)}>random</button>
       <PopUp setShowPopUp={setShowPopUp} showPopUp={showPopUp} 
       src={random.data.images.fixed_height.url}
+      getRandom={getRandom}
       />
 
     </div>

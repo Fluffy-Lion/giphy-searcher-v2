@@ -5,15 +5,10 @@ const GifImg = styled.img `
     margin-left: auto;
     margin-right: auto;
     display: block;
-
 `
 
 const GifItem = ({ src }) => {
-    return (
-        <>
-            <GifImg src={src} />
-        </>
-    )
+    return <GifImg src={src} />
 }
 
 export default GifItem
