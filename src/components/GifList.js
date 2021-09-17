@@ -1,44 +1,56 @@
-import { useEffect, useState } from "react"
-import styled from "styled-components"
-import AddToFav from "./AddToFav"
-import GifItem from "./GifItem"
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import AddToFav from "./AddToFav";
+import GifItem from "./GifItem";
 
-
-const GifWrap = styled.div `
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 5px;
-    
-`
-const GifCont = styled.div `
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 10px;
-    padding: 5px;
-`
+const GifWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5px;
+`;
+const GifCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  padding: 5px;
+`;
 
 const GifList = ({ data, favourites, setFavourites, ids, setIds }) => {
+  if (!data) {
+    return null;
+  }
+  return (
+    <GifWrap>
+      {data.map((gif, index) => {
+        return (
+          <GifCont key={index}>
+            <GifItem
+              ids={ids}
+              setIds={setIds}
+              data={data}
+              index={index}
+              gif={gif}
+              setFavourites={setFavourites}
+              favourites={favourites}
+            />
+            {ids.includes(gif.id) ? (
+              <p>added</p>
+            ) : (
+              <AddToFav
+                index={index}
+                favourites={favourites}
+                setFavourites={setFavourites}
+                data={data}
+                index={index}
+              />
+            )}
+          </GifCont>
+        );
+      })}
+    </GifWrap>
+  );
+};
 
-
-    if(!data ) {
-        return null
-    }
-    return (
-        <GifWrap>
-            {data.map((gif, index) => {
-                return (
-                <GifCont key={index}>
-                    <GifItem ids={ids} setIds={setIds} data={data} index={index} gif={gif} setFavourites={setFavourites} favourites={favourites} />
-                    {ids.includes(gif.id) ? <p>added</p> :
-                    <AddToFav index={index} favourites={favourites} setFavourites={setFavourites} data={data} index={index} />
-                    }
-                </GifCont>
-                )
-            })}
-        </GifWrap>
-    )
-}
-
-export default GifList
+export default GifList;

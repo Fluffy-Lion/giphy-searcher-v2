@@ -10,7 +10,7 @@ const App = () => {
   const [favourites, setFavourites] = useState([]);
   const [showPopUp, setShowPopUp] = useState(false);
   const [input, setInput] = useState("");
-  const [ids, setIds] = useState([])
+  const [ids, setIds] = useState([]);
 
   const key = process.env.REACT_APP_API_KEY;
 
@@ -60,16 +60,16 @@ const App = () => {
     }
   };
   const collector = () => {
-    let newArr = []
+    let newArr = [];
     favourites.map((item, index) => {
-        newArr.push(item.id)
-    })
-    setIds(newArr)
-  }
+      newArr.push(item.id);
+    });
+    setIds(newArr);
+  };
 
-  useEffect(()=> {
-      collector()
-  },[favourites])
+  useEffect(() => {
+    collector();
+  }, [favourites]);
 
   useEffect(() => {
     getRandom();
@@ -77,14 +77,14 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if(localStorage.getItem("fav")){
-      setFavourites(JSON.parse(localStorage.getItem("fav")))
+    if (localStorage.getItem("fav")) {
+      setFavourites(JSON.parse(localStorage.getItem("fav")));
     }
-  },[])
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem("fav", JSON.stringify(favourites))
-  }, [favourites])
+    localStorage.setItem("fav", JSON.stringify(favourites));
+  }, [favourites]);
 
   if (!loaded) {
     return null;
@@ -107,16 +107,15 @@ const App = () => {
 
           <Switch>
             <Route path="/favourites">
-              <Favourites 
-              favourites={favourites}
-              setFavourites={setFavourites}
+              <Favourites
+                favourites={favourites}
+                setFavourites={setFavourites}
               />
             </Route>
             <Route path="/">
               <Home
                 setShowPopUp={setShowPopUp}
                 showPopUp={showPopUp}
-                // src={random.data.images.fixed_height.url}
                 getRandom={getRandom}
                 favourites={favourites}
                 setFavourites={setFavourites}
@@ -127,7 +126,6 @@ const App = () => {
                 clearSearch={clearSearch}
                 random={random}
                 loaded={loaded}
-                
                 ids={ids}
                 setIds={setIds}
               />

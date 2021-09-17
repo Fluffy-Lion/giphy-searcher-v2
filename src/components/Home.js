@@ -15,7 +15,7 @@ const Home = ({
   random,
   loaded,
   ids,
-  setIds
+  setIds,
 }) => {
   if (!loaded) {
     return null;
