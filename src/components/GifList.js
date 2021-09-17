@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react"
 import styled from "styled-components"
-
-import GifItem from "./GifItem"
 import AddToFav from "./AddToFav"
+import GifItem from "./GifItem"
+
 
 const GifWrap = styled.div `
     display: flex;
@@ -18,8 +19,10 @@ const GifCont = styled.div `
     padding: 5px;
 `
 
-const GifList = ({ data, favourites, setFavourites }) => {
-    if(!data) {
+const GifList = ({ data, favourites, setFavourites, ids, setIds }) => {
+
+
+    if(!data ) {
         return null
     }
     return (
@@ -27,8 +30,10 @@ const GifList = ({ data, favourites, setFavourites }) => {
             {data.map((gif, index) => {
                 return (
                 <GifCont key={index}>
-                    <GifItem src={gif.images.fixed_height.url} />
-                    <AddToFav favourites={favourites} setFavourites={setFavourites} data={data} index={index} />
+                    <GifItem ids={ids} setIds={setIds} data={data} index={index} gif={gif} setFavourites={setFavourites} favourites={favourites} />
+                    {ids.includes(gif.id) ? <p>added</p> :
+                    <AddToFav index={index} favourites={favourites} setFavourites={setFavourites} data={data} index={index} />
+                    }
                 </GifCont>
                 )
             })}
