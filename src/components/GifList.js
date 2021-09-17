@@ -26,7 +26,7 @@ const GifList = ({ data, favourites, setFavourites }) => {
         <GifWrap>
             {data.map((gif, index) => {
                 return (
-                <GifCont>
+                <GifCont key={index}>
                     <GifItem src={gif.images.fixed_height.url} />
                     <AddToFav favourites={favourites} setFavourites={setFavourites} data={data} index={index} />
                 </GifCont>

@@ -26,6 +26,13 @@ const App = () => {
       }
   }
 
+  const clearSearch = (e) => {
+    e.preventDefault()
+    setData([])
+    setInput("")
+    getTrending()
+  }
+
   const getTrending = async () => {
     
     try {
@@ -64,8 +71,9 @@ const App = () => {
       <button onClick={() => setShowPopUp(true)}>random</button>
       <div>
         <form onSubmit={(e) => searcher(e)}>
-          <input type="text" onChange={(e) => setInput(e.target.value)} />
+          <input value={input} type="text" onChange={(e) => setInput(e.target.value)} />
           <button type="submit">search</button>
+          <button onClick={(e) => clearSearch(e)}>clear</button>
         </form>
       </div>
       <PopUp
