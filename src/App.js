@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import GifList from "./components/GifList";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import PopUp from "./components/PopUp";
-
+import Favourites from "./components/Favourites";
+import Home from "./components/Home";
 const App = () => {
 
   const [data, setData] = useState([])
@@ -65,29 +65,46 @@ const App = () => {
     return null
   }
   return (
-    <div>
-      <h1>giphy searcher v2</h1>
-      {/* get random gif */}
-      <button onClick={() => setShowPopUp(true)}>random</button>
-      <div>
-        <form onSubmit={(e) => searcher(e)}>
-          <input value={input} type="text" onChange={(e) => setInput(e.target.value)} />
-          <button type="submit">search</button>
-          <button onClick={(e) => clearSearch(e)}>clear</button>
-        </form>
+<div>
+  <h1> giphy searcher v2 </h1>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/favourites">favourites</Link>
+              </li>
+            </ul>
+          </nav>
+
+          <Switch>
+            <Route path="/favourites">
+              <Favourites />
+            </Route>
+            <Route path="/">
+              <Home 
+              setShowPopUp={setShowPopUp}
+              showPopUp={showPopUp}
+              // src={random.data.images.fixed_height.url}
+              getRandom={getRandom}
+              favourites={favourites}
+              setFavourites={setFavourites}
+              data={data} 
+              searcher={searcher}
+              input={input}
+              setInput={setInput}
+              clearSearch={clearSearch}
+              random={random}
+              loaded={loaded}
+              />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
       </div>
-      <PopUp
-        setShowPopUp={setShowPopUp}
-        showPopUp={showPopUp}
-        src={random.data.images.fixed_height.url}
-        getRandom={getRandom}
-      />
-      <GifList
-        favourites={favourites}
-        setFavourites={setFavourites}
-        data={data} 
-      />
-    </div>
   );
 }
 
