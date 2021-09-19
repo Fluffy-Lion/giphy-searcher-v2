@@ -1,6 +1,10 @@
 import GifList from "./GifList";
+import styled from "styled-components";
 
 import PopUp from "./PopUp";
+const HomeWrap = styled.div `
+    background-color: #93EDE0;
+`
 const Home = ({
   setShowPopUp,
   showPopUp,
@@ -21,7 +25,7 @@ const Home = ({
     return null;
   }
   return (
-    <div>
+    <HomeWrap>
       <button onClick={() => setShowPopUp(true)}>random</button>
       <div>
         <form onSubmit={(e) => searcher(e)}>
@@ -47,7 +51,7 @@ const Home = ({
         ids={ids}
         setIds={setIds}
       />
-    </div>
+    </HomeWrap>
   );
 };
 
