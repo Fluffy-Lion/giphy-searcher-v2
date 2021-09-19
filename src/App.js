@@ -9,8 +9,6 @@ const AppContainer = styled.div `
   background-color: #93EDE0;
 `
 const Header = styled.h1 `
-  border: solid red 3px;
-  box-sizing: border-box;
   font-family: Arial, sans-serif;
   font-size: 80px;
   text-align: center;
