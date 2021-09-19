@@ -1,8 +1,20 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import styled from "styled-components";
 import Favourites from "./components/Favourites";
 import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+
+const AppContainer = styled.div `
+  background-color: #93EDE0;
+`
+const Header = styled.h1 `
+  font-family: Arial, sans-serif;
+  font-size: 80px;
+  text-align: center;
+  color: #E7ADF1;
+  text-shadow: 2px 2px black;
+`
 const App = () => {
   const [data, setData] = useState([]);
   const [random, setRandom] = useState({});
@@ -90,20 +102,11 @@ const App = () => {
     return null;
   }
   return (
-    <div>
-      <h1> giphy searcher v2 </h1>
+    <AppContainer>
+      <Header>giphy searcher v2</Header>
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/favourites">Favourites</Link>
-              </li>
-            </ul>
-          </nav>
+          <NavBar />
 
           <Switch>
             <Route path="/favourites">
@@ -133,7 +136,7 @@ const App = () => {
           </Switch>
         </div>
       </Router>
-    </div>
+    </AppContainer>
   );
 };
 
