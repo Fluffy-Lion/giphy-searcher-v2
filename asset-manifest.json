@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/giphy-searcher-v2/static/js/main.258c6e89.chunk.js",
+    "main.js.map": "/giphy-searcher-v2/static/js/main.258c6e89.chunk.js.map",
+    "runtime-main.js": "/giphy-searcher-v2/static/js/runtime-main.ba025315.js",
+    "runtime-main.js.map": "/giphy-searcher-v2/static/js/runtime-main.ba025315.js.map",
+    "static/js/2.facef952.chunk.js": "/giphy-searcher-v2/static/js/2.facef952.chunk.js",
+    "static/js/2.facef952.chunk.js.map": "/giphy-searcher-v2/static/js/2.facef952.chunk.js.map",
+    "index.html": "/giphy-searcher-v2/index.html",
+    "static/js/2.facef952.chunk.js.LICENSE.txt": "/giphy-searcher-v2/static/js/2.facef952.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba025315.js",
+    "static/js/2.facef952.chunk.js",
+    "static/js/main.258c6e89.chunk.js"
+  ]
+}
