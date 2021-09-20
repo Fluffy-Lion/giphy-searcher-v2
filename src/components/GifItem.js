@@ -1,22 +1,23 @@
 import styled from "styled-components";
 
 const GifImg = styled.img`
-  width: auto;
+  @media (min-width: 550px) {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+
   display: block;
-  padding: 5px;
 `;
 
 const GifItem = ({ gif }) => {
   if (!gif) {
     return null;
   }
-  return (
-    <div>
-      <GifImg src={gif.images.fixed_height.url} />
-    </div>
-  );
+  return <GifImg src={gif.images.fixed_height.url} />;
 };
 
 export default GifItem;

@@ -10,12 +10,12 @@ const PageWrap = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${({ showPopUp }) => !showPopUp && "rgba(0, 0, 0, 0.3)"};
-  border: solid green 5px;
 `;
 const StyledButton = styled.button`
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3px;
 `;
 const Modal = styled.div`
   @media (min-width: 550px) {
@@ -37,7 +37,7 @@ const Modal = styled.div`
 `;
 
 const PopUp = (props) => {
-  if (!props.showPopUp) {
+  if (!props.showPopUp || !props.src) {
     return null;
   }
 
@@ -48,7 +48,7 @@ const PopUp = (props) => {
   return (
     <PageWrap>
       <Modal>
-        <GifItem src={props.src} setShowPopUp={props.setShowPopUp} />
+        <GifItem gif={props.src.data} setShowPopUp={props.setShowPopUp} />
         <StyledButton onClick={closeHandler}>close</StyledButton>
       </Modal>
     </PageWrap>

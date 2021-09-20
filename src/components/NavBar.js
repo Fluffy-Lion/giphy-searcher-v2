@@ -8,7 +8,7 @@ const NavWrap = styled.div`
 const StyledUl = styled.ul`
   display: flex;
   justify-content: center;
-  
+  padding: 0;
 `;
 const StyledList = styled.li`
   width: 200px;
@@ -18,7 +18,7 @@ const StyledList = styled.li`
   margin: 5px;
   color: #e7adf1;
   &:hover {
-    background-color: #EDE093;
+    background-color: #ede093;
   }
 `;
 const NavBar = () => {

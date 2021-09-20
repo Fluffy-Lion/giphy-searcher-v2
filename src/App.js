@@ -5,16 +5,17 @@ import Favourites from "./components/Favourites";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 
-const AppContainer = styled.div `
-  background-color: #93EDE0;
-`
-const Header = styled.h1 `
+const AppContainer = styled.div`
+  background-color: #93ede0;
+`;
+const Header = styled.h1`
   font-family: Arial, sans-serif;
   font-size: 80px;
   text-align: center;
-  color: #E7ADF1;
+  color: #e7adf1;
   text-shadow: 2px 2px black;
-`
+  margin-top: 20px;
+`;
 const App = () => {
   const [data, setData] = useState([]);
   const [random, setRandom] = useState({});
@@ -103,11 +104,10 @@ const App = () => {
   }
   return (
     <AppContainer>
-      <Header>giphy searcher v2</Header>
+      <Header>giphy searcher</Header>
       <Router>
         <div>
           <NavBar />
-
           <Switch>
             <Route path="/favourites">
               <Favourites

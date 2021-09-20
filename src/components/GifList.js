@@ -15,8 +15,8 @@ const GifCont = styled.div`
   justify-content: center;
   margin: 10px;
   padding: 5px;
-  background-color: #E7ADF1;
-  border: solid 1px #BEBFFD;
+  background-color: #e7adf1;
+  border: solid 1px #bebffd;
   border-radius: 3px;
   box-shadow: 4.8px 9.6px 9.6px hsl(0deg 0% 0% / 0.35);
 `;

@@ -2,9 +2,16 @@ import GifList from "./GifList";
 import styled from "styled-components";
 
 import PopUp from "./PopUp";
-const HomeWrap = styled.div `
-    background-color: #93EDE0;
-`
+import Search from "./Search";
+const HomeWrap = styled.div`
+  background-color: #93ede0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+const RandButton = styled.button`
+  width: 100px;
+`;
 const Home = ({
   setShowPopUp,
   showPopUp,
@@ -26,22 +33,17 @@ const Home = ({
   }
   return (
     <HomeWrap>
-      <button onClick={() => setShowPopUp(true)}>random</button>
-      <div>
-        <form onSubmit={(e) => searcher(e)}>
-          <input
-            value={input}
-            type="text"
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <button type="submit">search</button>
-          <button onClick={(e) => clearSearch(e)}>clear</button>
-        </form>
-      </div>
+      <Search
+        searcher={searcher}
+        input={input}
+        setInput={setInput}
+        clearSearch={clearSearch}
+      />
+      <RandButton onClick={() => setShowPopUp(true)}>random</RandButton>
       <PopUp
         setShowPopUp={setShowPopUp}
         showPopUp={showPopUp}
-        src={random.data.images.fixed_height.url}
+        src={random}
         getRandom={getRandom}
       />
       <GifList
